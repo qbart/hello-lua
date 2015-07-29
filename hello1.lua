@@ -80,7 +80,7 @@ arr[0] = 'a'
 arr[3] = 'b'
 arr[10] = 'c'
 
-for i=0, table.maxn(arr) do
+for i=1,10 do
 	local tmp = arr[i]
 	if tmp == nil then
 		tmp = "nil"
@@ -89,8 +89,15 @@ for i=0, table.maxn(arr) do
 	print( string.format("a[%d] = %s", i, tmp) );
 end
 
+table.size = function(t)
+  local len = 0
+  for _ in pairs(t) do
+    len = len + 1
+  end
+  return len
+end
 
-print("len " .. table.maxn(arr) + 1)
+print("len " .. table.size(arr))
 
 
 -- operators
@@ -117,5 +124,3 @@ print( "2^5 = " .. 2^5 )
 print( "fractional part of PI = " .. math.pi%1 )
 print( "integer part of PI = " .. math.pi - math.pi%1 )
 print( "two decimal number = " .. math.pi - math.pi%0.01 )
-
-
